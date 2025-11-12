@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numérique Responsable à GEM - Impact Environnemental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Votre CSS existant reste inchangé */
+        :root {
+            --primary: #1a936f;
+            --secondary: #88d498;
+            --accent: #f24236;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gem-blue: #003366;
+            --gem-gold: #FFD700;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --header-height: 80px;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header avec animation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            height: var(--header-height);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo span {
+            color: var(--gem-blue);
+            position: relative;
+        }
+
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gem-blue), transparent);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .logo:hover span::after {
+            width: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--gem-blue));
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Bannière hero avec animation */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 147, 111, 0.85) 0%, rgba(0, 51, 102, 0.85) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a936f"/><path d="M0 0L100 100" stroke="%23003366" stroke-width="2"/><path d="M100 0L0 100" stroke="%23003366" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            margin-top: var(--header-height);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--gem-blue));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(44, 122, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 122, 80, 0.4);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        /* Sections de contenu */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            padding-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--gem-blue));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .overview {
+            padding: 80px 0;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            cursor: pointer; /* Ajout pour indiquer que c'est cliquable */
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26, 147, 111, 0.1), rgba(0, 51, 102, 0.1));
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(5deg);
+            background: linear-gradient(135deg, var(--primary), var(--gem-blue));
+            color: white;
+        }
+
+        /* Page spécifique */
+        .page {
+            display: none;
+            padding: 40px 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            margin-top: var(--header-height);
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Recherche */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .research-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .research-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .research-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--gem-blue));
+            transition: var(--transition);
+        }
+
+        .research-item:hover::before {
+            height: 100%;
+        }
+
+        .research-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Graphique amélioré */
+        .chart-container {
+            margin-top: 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .chart-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            height: 350px;
+            gap: 20px;
+        }
+
+        .chart-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-bars {
+            flex: 1;
+            background: #f7fafc;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Lignes de la grille */
+        .grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        .bar {
+            width: 50px;
+            background: linear-gradient(to top, var(--primary), var(--gem-blue));
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s ease;
+            position: relative;
+            bottom: 0;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bar:hover .bar-value {
+            opacity: 1;
+        }
+
+        .year-label {
+            margin-top: 10px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Auteurs */
+        .authors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .author-card {
+            text-align: center;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .author-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .author-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--gem-blue));
+            transition: var(--transition);
+        }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .author-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, rgba(26, 147, 111, 0.2), rgba(0, 51, 102, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 3.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+            border: 3px solid transparent;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .author-card:hover .author-img {
+            background: linear-gradient(135deg, var(--primary), var(--gem-blue));
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .author-card:hover .author-img img {
+            transform: scale(1.1);
+        }
+
+        /* Section GEM */
+        .gem-section {
+            background: linear-gradient(135deg, var(--gem-blue) 0%, #002244 100%);
+            color: white;
+            padding: 80px 0;
+            margin: 60px 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .gem-logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--gem-gold);
+        }
+
+        /* Bibliographie */
+        .bibliography {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .bibliography-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .bibliography-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bibliography-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Statistiques */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gem-gold);
+            margin-bottom: 10px;
+        }
+
+        /* Deep Seek mention */
+        .deepseek-mention {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(0, 51, 102, 0.1);
+            border-radius: 15px;
+            font-style: italic;
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin: 40px 0;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .quiz-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quiz-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f7fafc;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .quiz-question.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quiz-question h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+        }
+
+        .quiz-option:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .quiz-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--gem-blue));
+            color: white;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .quiz-result h3 {
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .quiz-score {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .quiz-feedback {
+            margin-bottom: 20px;
+        }
+
+        .quiz-restart {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .quiz-restart.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quiz-restart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Correction styles */
+        .correct {
+            background-color: rgba(26, 147, 111, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .incorrect {
+            background-color: rgba(242, 66, 54, 0.1);
+            border-left: 4px solid var(--accent);
+        }
+
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Pied de page */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a202c 100%);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 100px;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 25px;
+            color: var(--secondary);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Effets de vague */
+        .wave-divider {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            margin: 60px 0;
+        }
+
+        .wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231a936f' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 120px;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 10px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .card-container, .research-grid, .authors, .opinions, .footer-content, .stats-container, .bibliography {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Ajustements supplémentaires pour mobile */
+            .hero {
+                padding: 100px 20px 80px !important;
+            }
+
+            .page {
+                padding-top: var(--header-height);
+            }
+
+            /* Ajustements du graphique pour mobile */
+            .chart-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .bar {
+                width: 30px;
+            }
+
+            .quiz-container {
+                padding: 20px;
+            }
+        }
+
+        /* Indicateur de défilement */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--gem-blue));
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        /* Mode sombre CORRIGÉ */
+        .dark-mode {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: #f7fafc !important;
+        }
+
+        .dark-mode header {
+            background: rgba(45, 55, 72, 0.95);
+        }
+
+        .dark-mode nav ul li a {
+            color: #e2e8f0;
+        }
+
+        .dark-mode .card,
+        .dark-mode .research-item,
+        .dark-mode .author-card,
+        .dark-mode .bibliography-item,
+        .dark-mode .chart-container,
+        .dark-mode .quiz-container,
+        .dark-mode .quiz-question,
+        .dark-mode .lifecycle-phase,
+        .dark-mode .factor-item {
+            background: #2d3748;
+            color: #f7fafc !important;
+        }
+
+        .dark-mode .card-content,
+        .dark-mode .research-item p,
+        .dark-mode .author-card p,
+        .dark-mode .bibliography-item p,
+        .dark-mode .lifecycle-phase p,
+        .dark-mode .factor-item p,
+        .dark-mode .container p,
+        .dark-mode .container li {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode h4,
+        .dark-mode h5,
+        .dark-mode h6,
+        .dark-mode .section-title,
+        .dark-mode .chart-title,
+        .dark-mode .card h3,
+        .dark-mode .research-item h3,
+        .dark-mode .author-card h3,
+        .dark-mode .bibliography-item h3 {
+            color: #88d498 !important;
+        }
+
+        .dark-mode .hero h1,
+        .dark-mode .hero p {
+            color: white !important;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark-mode .year-label,
+        .dark-mode .stat-label,
+        .dark-mode .footer-section p,
+        .dark-mode .footer-section a {
+            color: #cbd5e0 !important;
+        }
+
+        .dark-mode .deepseek-mention {
+            background: rgba(0, 51, 102, 0.3);
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode .gem-section {
+            background: linear-gradient(135deg, #002244 0%, #001933 100%);
+            color: white !important;
+        }
+
+        .dark-mode .footer-section h3 {
+            color: #88d498 !important;
+        }
+
+        .dark-mode .modal-content {
+            background: #2d3748;
+            color: #f7fafc;
+        }
+
+        .dark-mode .modal-title {
+            color: #88d498 !important;
+        }
+
+        .dark-mode .close-modal {
+            color: #88d498;
+        }
+
+        .dark-mode .explanation {
+            background: #4a5568 !important;
+            color: #f7fafc !important;
+        }
+
+        .dark-mode .quiz-option {
+            background: #4a5568;
+            border-color: #718096;
+            color: #f7fafc;
+        }
+
+        .dark-mode .quiz-option:hover {
+            background: #718096;
+        }
+
+        .dark-mode .correct {
+            background-color: rgba(26, 147, 111, 0.3) !important;
+            border-left: 4px solid var(--primary);
+        }
+
+        .dark-mode .incorrect {
+            background-color: rgba(242, 66, 54, 0.3) !important;
+            border-left: 4px solid var(--accent);
+        }
+
+        .dark-mode ul,
+        .dark-mode ol {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode li {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode .fas,
+        .dark-mode .far,
+        .dark-mode .fab {
+            color: inherit !important;
+        }
+
+        .dark-mode [style*="background: white"],
+        .dark-mode [style*="background-color: white"],
+        .dark-mode [style*="background:rgba(255,255,255"] {
+            background: #2d3748 !important;
+            color: #f7fafc !important;
+        }
+
+        .dark-mode [style*="color: var(--primary)"] {
+            color: #88d498 !important;
+        }
+
+        .dark-mode [style*="color: var(--dark)"] {
+            color: #f7fafc !important;
+        }
+
+        .dark-mode .chart-bars {
+            background: #4a5568;
+        }
+
+        .dark-mode .year-label {
+            color: white;
+        }
+
+        .dark-mode .grid-line {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animation de particules */
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Animation de curseur personnalisé */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0.5;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        .modal-opinion {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .modal-author {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .modal-author::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* Navigation active state */
+        .nav-active {
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-active::after {
+            width: 100% !important;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Curseur personnalisé -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Indicateur de défilement -->
+    <div class="scroll-indicator"></div>
+
+    <!-- Bouton mode sombre -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Modal pour les opinions -->
+    <div id="opinion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" class="modal-title"></h2>
+            <div id="modal-body" class="modal-opinion"></div>
+            <p id="modal-author" class="modal-author"></p>
+        </div>
+    </div>
+
+    <!-- En-tête avec navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">GEM<span>Numérique</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('accueil'); markActiveNav(this); return false;" class="nav-active">Accueil</a></li>
+                        <li><a href="#" onclick="showPage('impact'); markActiveNav(this); return false;">Causes</a></li>
+                        <li><a href="#" onclick="showPage('recherche'); markActiveNav(this); return false;">Impacts</a></li>
+                        <li><a href="#" onclick="showPage('auteurs'); markActiveNav(this); return false;">Auteurs</a></li>
+                        <li><a href="#" onclick="showPage('quiz'); markActiveNav(this); return false;">Quiz</a></li>
+                        <li><a href="#" onclick="showPage('bibliographie'); markActiveNav(this); return false;">Bibliographie</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page d'accueil -->
+    <div id="accueil" class="page active">
+        <div class="hero">
+            <!-- Animation de particules -->
+            <div class="particles-container" id="particles-js"></div>
+            <div class="container">
+                <h1>L'Impact Environnemental du Numérique</h1>
+                <p>Découvrez comment nos technologies numériques affectent notre planète et quelles solutions existent pour un avenir plus durable.</p>
+                <a href="#" class="btn" onclick="showPage('recherche'); markActiveNav(document.querySelector('nav a[onclick*=\"recherche\"]')); return false;">Explorer les résultats</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <section class="overview">
+                <h2 class="section-title">Ce que vous trouverez sur ce site</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem;">Notre site vise à sensibiliser sur les impacts environnementaux du numérique et présente des solutions concrètes pour réduire notre empreinte digitale. Explorez, avec le bachelor de GEM, nos différentes sections pour en apprendre davantage.</p>
+
+                <div class="card-container">
+                    <div class="card" data-target="recherche">
+                        <div class="card-content">
+                            <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                            <h3>Résultats de recherche</h3>
+                            <p>Découvrez les données clés et les statistiques sur l'impact environnemental du numérique, issues de nos recherches approfondies.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" data-target="auteurs">
+                        <div class="card-content">
+                            <div class="card-icon"><i class="fas fa-users"></i></div>
+                            <h3>Présentation des auteurs</h3>
+                            <p>Apprenez-en plus sur notre équipe de bachelors passionnés par la durabilité et le numérique responsable.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon"><i class="fas fa-comments"></i></div>
+                            <h3>Opinions et analyses</h3>
+                            <p>Lisez nos points de vue et analyses sur les enjeux et solutions concernant l'impact environnemental du numérique.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" data-target="quiz">
+                        <div class="card-content">
+                            <div class="card-icon"><i class="fas fa-question-circle"></i></div>
+                            <h3>Quiz interactif</h3>
+                            <p>Testez vos connaissances sur l'impact environnemental du numérique avec notre quiz éducatif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deepseek-mention">
+                    <p>Ce site a été réalisé avec l'aide de <strong>Deep Seek R1</strong>, un assistant IA avancé qui nous a aidés à compiler et analyser les données sur l'impact environnemental du numérique.</p>
+                </div>
+            </section>
+
+            <!-- Section GEM -->
+            <section class="gem-section">
+                <div class="container">
+                    <div class="gem-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2>Projet réalisé à Grenoble École de Management</h2>
+                    <p>Ce site a été développé dans le cadre du Bachelor de GEM, mettant en avant l'engagement de l'école pour un numérique plus responsable et durable.</p>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">Étudiants engagés</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25</div>
+                            <div class="stat-label">Projets durables</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2025</div>
+                            <div class="stat-label">Objectif neutralité</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Nouvelle page: Impact Environnemental du Numérique -->
+    <div id="impact" class="page">
+        <div class="container">
+            <h2 class="section-title">L'Impact Environnemental du Numérique</h2>
+
+            <!-- Section d'introduction -->
+            <div class="intro-section" style="text-align: center; margin-bottom: 50px;">
+                <p style="font-size: 1.2rem; max-width: 900px; margin: 0 auto 30px;">
+                    Le numérique est souvent perçu comme un domaine "immatériel" et donc peu polluant.
+                    Pourtant, son impact est tangible, complexe et en croissance rapide.
+                </p>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">70-80%</div>
+                        <div class="stat-label">de l'empreinte d'un appareil vient de sa fabrication</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4%</div>
+                        <div class="stat-label">des émissions mondiales de GES</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">53.6M</div>
+                        <div class="stat-label">tonnes de déchets électroniques en 2019</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section sur les phases du cycle de vie -->
+            <h3 class="chart-title" style="text-align: center; margin: 60px 0 40px;">Les 3 phases du cycle de vie numérique</h3>
+
+            <div class="lifecycle-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+                <div class="lifecycle-phase" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align: center; transition: var(--transition);">
+                    <div class="phase-icon" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">Fabrication</h4>
+                    <p style="margin-bottom: 15px;"><strong>La phase la plus impactante (70-80%)</strong></p>
+                    <ul style="text-align: left; list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Extraction de ressources destructrice</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Énergie grise colossale</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Transport mondial des composants</li>
+                    </ul>
+                </div>
+
+                <div class="lifecycle-phase" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align: center; transition: var(--transition);">
+                    <div class="phase-icon" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">Utilisation</h4>
+                    <p style="margin-bottom: 15px;"><strong>Impact le plus visible</strong></p>
+                    <ul style="text-align: left; list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Consommation électrique des appareils</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Data centers énergivores</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Réseaux (4G/5G, câbles sous-marins)</li>
+                    </ul>
+                </div>
+
+                <div class="lifecycle-phase" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align: center; transition: var(--transition);">
+                    <div class="phase-icon" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">Fin de Vie</h4>
+                    <p style="margin-bottom: 15px;"><strong>Déchets et obsolescence</strong></p>
+                    <ul style="text-align: left; list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Déchets électroniques (DEEE)</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Difficulté de recyclage</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i> Obsolescence technique et logicielle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section sur les facteurs clés -->
+            <h3 class="chart-title" style="text-align: center; margin: 60px 0 40px;">Les principaux facteurs d'impact</h3>
+
+            <div class="factors-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="factor-item" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: var(--transition);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="factor-icon" style="font-size: 2.5rem; color: var(--primary); margin-right: 15px;">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 style="color: var(--primary); margin: 0;">Streaming Vidéo</h4>
+                    </div>
+                    <p>Plus gros poste de trafic de données internet. La HD/4K consomme énormément de bande passante et d'énergie dans les data centers.</p>
+                </div>
+
+                <div class="factor-item" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: var(--transition);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="factor-icon" style="font-size: 2.5rem; color: var(--primary); margin-right: 15px;">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4 style="color: var(--primary); margin: 0;">Cloud et Stockage</h4>
+                    </div>
+                    <p>Stocker des données "à vie" signifie qu'elles sont constamment hébergées et copiées sur plusieurs serveurs qui consomment de l'énergie 24h/24.</p>
+                </div>
+
+                <div class="factor-item" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: var(--transition);">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="factor-icon" style="font-size: 2.5rem; color: var(--primary); margin-right: 15px;">
+                            <i class="fas fa-bluetooth-b"></i>
+                        </div>
+                        <h4 style="color: var(--primary); margin: 0;">Internet des Objets (IoT)</h4>
+                    </div>
+                    <p>La multiplication des objets connectés (montres, enceintes, ampoules) augmente le nombre d'appareils à fabriquer et la quantité de données échangées.</p>
+                </div>
+            </div>
+
+            <!-- Graphique sur la répartition de l'impact -->
+            <div class="chart-container" style="margin-top: 60px;">
+                <h3 class="chart-title">Répartition de l'impact environnemental d'un smartphone</h3>
+                <div class="chart-wrapper">
+                    <div class="chart-content">
+                        <div class="chart-bars" style="justify-content: center; gap: 50px;">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 75%; width: 60px;">
+                                    <div class="bar-value">75%</div>
+                                </div>
+                                <div class="year-label">Fabrication</div>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar" style="height: 20%; width: 60px; background: linear-gradient(to top, var(--secondary), var(--primary));">
+                                    <div class="bar-value">20%</div>
+                                </div>
+                                <div class="year-label">Utilisation</div>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar" style="height: 5%; width: 60px; background: linear-gradient(to top, #88d498, var(--secondary));">
+                                    <div class="bar-value">5%</div>
+                                </div>
+                                <div class="year-label">Fin de vie</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section sur l'effet rebond -->
+            <div style="background: rgba(26, 147, 111, 0.1); padding: 40px; border-radius: 15px; margin: 60px 0; text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">L'effet rebond</h3>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                    Les gains d'efficacité énergétique sont souvent annulés par une augmentation de la consommation.
+                    C'est ce qu'on appelle l'<strong>effet rebond</strong> ou <strong>paradoxe de Jevons</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Page de résultats de recherche -->
+    <div id="recherche" class="page">
+        <div class="container">
+            <h2 class="section-title">Résultats de notre recherche</h2>
+
+            <div class="research-grid">
+                <div class="research-item">
+                    <h3>Énergie consommée par le numérique</h3>
+                    <p>Le numérique consomme environ 10% de l'électricité mondiale, et cette part ne cesse d'augmenter avec la croissance des data centers et des objets connectés.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Émissions de CO₂</h3>
+                    <p>Le secteur du numérique est responsable d'environ 4% des émissions mondiales de gaz à effet de serre, soit plus que le transport aérien civil.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Consommation d'eau</h3>
+                    <p>Les data centers consomment d'énormes quantités d'eau pour le refroidissement des serveurs, avec une estimation de plusieurs litres par requête de recherche.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Déchets électroniques</h3>
+                    <p>53,6 millions de tonnes de déchets électroniques ont été générés en 2019, et seulement 17,4% ont été collectés et recyclés.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Impact de la 5G</h3>
+                    <p>Le déploiement de la 5G pourrait augmenter la consommation énergétique des réseaux de 150 à 300% d'ici 2025 selon certaines estimations.</p>
+                </div>
+
+                <div class="research-item">
+                    <h3>Solutions envisagées</h3>
+                    <p>L'écoconception des services numériques, l'allongement de la durée de vie des appareils et le recours aux énergies renouvelables sont parmi les solutions les plus prometteuses.</p>
+                </div>
+            </div>
+
+            <!-- Graphique interactif amélioré -->
+            <div class="chart-container">
+                <h3 class="chart-title">Évolution de l'impact environnemental du numérique (2015-2024)</h3>
+                <div class="chart-wrapper">
+                    <div class="chart-content">
+                        <div class="chart-bars">
+                            <!-- Barres du graphique -->
+                            <div class="bar-container">
+                                <div class="bar" style="height: 24%;">
+                                    <div class="bar-value">60</div>
+                                </div>
+                                <div class="year-label">2015</div>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar" style="height: 40%;">
+                                    <div class="bar-value">100</div>
+                                </div>
+                                <div class="year-label">2018</div>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar" style="height: 64%;">
+                                    <div class="bar-value">160</div>
+                                </div>
+                                <div class="year-label">2021</div>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar" style="height: 88%;">
+                                    <div class="bar-value">220</div>
+                                </div>
+                                <div class="year-label">2024</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; font-style: italic; color: #666;">
+                    Impact mesuré en équivalent CO₂ (en millions de tonnes)
+                </p>
+            </div>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Page des auteurs -->
+    <div id="auteurs" class="page">
+        <div class="container">
+            <h2 class="section-title">Qui sommes-nous ?</h2>
+
+            <div class="authors">
+                <div class="author-card">
+                    <div class="author-img" onclick="showOpinion('camille')">
+                        <img src="https://live.staticflickr.com/65535/54400558379_2121199661_b.jpg" alt="Camille Pech">
+                    </div>
+                    <h3>Camille Pech</h3>
+                    <p>Nageur et étudiant à Grenoble Ecole de Management, passionné par le développement durable, je m'intéresse particulièrement à l'usage des ressources en eau.</p>
+                    <p>camille.pech@grenoble-em.com</p>
+                    <div style="margin-top: 20px;">
+                        <a href="mailto:camille.pech@grenoble-em.com" style="color: var(--primary); margin: 0 10px;"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-img" onclick="showOpinion('diego')">
+                        <img src="https://www.jlbourg-basket.com/wp-content/uploads/2024/06/Diego-Roman-750x375.jpg" alt="Diego Roman">
+                    </div>
+                    <h3>Diego Roman</h3>
+                    <p>Basketteur franco-suisse, étudiant en bachelor digital à Grenoble Ecole de Management, je recherche les intersections entre technologie et développement durable pour un avenir plus responsable.</p>
+                    <p>diego.roman@grenoble-em.com</p>
+                    <div style="margin-top: 20px;">
+                        <a href="mailto:diego.roman@grenoble-em.com" style="color: var(--primary); margin: 0 10px;"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                <h3 style="color: var(--primary); margin-bottom: 20px; font-family: 'Montserrat', sans-serif;">Notre démarche</h3>
+                <p>Nous avons créé ce site afin de partager les résultats de notre recherche sur l'impact environnemental du numérique. Notre objectif est de sensibiliser les étudiants de GEM aux enjeux écologiques liés à nos usages digitaux et de proposer des solutions concrètes pour réduire notre empreinte numérique.</p>
+                <p>Ce projet est le fruit de plusieurs semaines de recherche et d'analyse de données provenant de sources académiques et professionnelles fiables.</p>
+            </div>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Page de quiz -->
+    <div id="quiz" class="page">
+        <div class="container">
+            <h2 class="section-title">Quiz: Testez vos connaissances</h2>
+
+            <div class="quiz-container">
+                <div class="quiz-intro">
+                    <p>Découvrez votre niveau de connaissance sur l'impact environnemental du numérique avec ce quiz de 5 questions. Les réponses et explications détaillées vous seront fournies à la fin.</p>
+                </div>
+
+                <form id="quiz-form">
+                    <div class="quiz-question">
+                        <h3>Question 1 : Quelle phase du cycle de vie d'un smartphone (fabrication, utilisation, fin de vie) a généralement le plus grand impact environnemental ?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> a) La fabrication
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> b) L'utilisation (la recharge)
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> c) La fin de vie (le recyclage)
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation-q1">
+                            <p><strong>Réponse correcte : a) La fabrication</strong></p>
+                            <p>C'est la phase la plus impactante (70-80% de l'empreinte), à cause de l'extraction des minerais, de la transformation des matériaux et du transport des composants à travers le monde.</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 2 : Quelle activité numérique est considérée comme la plus vorace en données et en énergie ?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> a) Envoyer des emails
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> b) Regarder des vidéos en streaming (HD/4K)
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> c) Naviguer sur les réseaux sociaux
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation-q2">
+                            <p><strong>Réponse correcte : b) Regarder des vidéos en streaming (HD/4K)</strong></p>
+                            <p>Le streaming vidéo représente la grande majorité du trafic de données mondial. La haute définition et la 4K exigent un transfert de données bien plus important que les autres activités, sollicitant énormément les réseaux et les data centers.</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 3 : Vrai ou Faux : La plus grande partie de l'énergie consommée par un data center sert à faire tourner ses serveurs.</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> a) Vrai
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> b) Faux
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation-q3">
+                            <p><strong>Réponse correcte : b) Faux</strong></p>
+                            <p>Une part très importante (souvent autour de 40-50%) de l'énergie d'un data center est en réalité utilisée pour son <strong>système de refroidissement</strong>, nécessaire pour éviter la surchauffe des serveurs.</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 4 : Quel est le principal défi environnemental lié à la fin de vie des équipements numériques ?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> a) Ils deviennent trop lents.
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> b) Ils génèrent une grande quantité de déchets toxiques difficiles à recycler.
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> c) Ils consomment encore un peu d'énergie même éteints.
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation-q4">
+                            <p><strong>Réponse correcte : b) Ils génèrent une grande quantité de déchets toxiques difficiles à recycler.</strong></p>
+                            <p>La complexité de la composition des appareils électroniques et la présence de substances dangereuses rendent le recyclage complexe et coûteux. Une grande partie des DEEE (Déchets d'Équipements Électriques et Électroniques) finit incinérée ou enfouie, ou est exportée illégalement vers des pays du Sud.</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 5 : Que signifie l'"effet rebond" (ou paradoxe de Jevons) dans le contexte du numérique ?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> a) Les appareils deviennent moins chers.
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> b) Les gains d'efficacité énergétique sont compensés par une hausse de la consommation globale (ex: on stocke plus car c'est gratuit).
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> c) Les vieux ordinateurs sont jetés à la poubelle.
+                            </label>
+                        </div>
+                        <div class="explanation" id="explanation-q5">
+                            <p><strong>Réponse correcte : b) Les gains d'efficacité énergétique sont compensés par une hausse de la consommation globale.</strong></p>
+                            <p>C'est le cœur du problème. Par exemple, parce que le stockage en cloud est perçu comme "illimité et gratuit", on ne fait plus attention à supprimer ses vieux fichiers. Parce qu'un data center est plus efficace, on en construit plus pour répondre à une demande qui explose. L'amélioration technique ne suffit pas sans sobriété dans les usages.</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-submit">
+                        <button type="button" class="btn" onclick="submitQuiz()">Soumettre le quiz</button>
+                    </div>
+                </form>
+
+                <div class="quiz-result" id="quiz-result">
+                    <h3>Résultats du quiz</h3>
+                    <div class="quiz-score" id="quiz-score">0/5</div>
+                    <div class="quiz-feedback" id="quiz-feedback"></div>
+                    <button class="quiz-restart" onclick="restartQuiz()">Recommencer le quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Page de bibliographie -->
+    <div id="bibliographie" class="page">
+        <div class="container">
+            <h2 class="section-title">Bibliographie</h2>
+
+            <div class="deepseek-mention">
+                <p>Les données présentées sur ce site ont été compilées et analysées avec l'aide de <strong>Deep Seek R1</strong>. Voici les principales ressources utilisées :</p>
+            </div>
+
+            <div class="bibliography">
+                <div class="bibliography-item">
+                    <h3>Rapports et études</h3>
+                    <ul>
+                        <li>ADEME (2021). "Impact environnemental du numérique en France"</li>
+                    </ul>
+                </div>
+
+                <div class="bibliography-item">
+                    <h3>Sources institutionnelles</h3>
+                    <ul>
+                        <li>ARCEP (2022). "Baromètre du numérique"</li>
+                    </ul>
+                </div>
+
+                <div class="bibliography-item">
+                    <h3>Ressources en ligne</h3>
+                    <ul>
+                        <li>CNRS Le Journal. "Le numérique, ogre énergétique ?"</li>
+                        <li>The Conversation. "Numerique et environnement : les faces cachées de la dématérialisation"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-divider">
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <p>Site éducatif sur l'impact environnemental du numérique créé par des étudiants passionnés de Grenoble École de Management.</p>
+                    <p>Réalisé avec l'aide de <strong>Deep Seek R1</strong>.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <p><a href="#" onclick="showPage('accueil'); markActiveNav(document.querySelector('nav a[onclick*=\"accueil\"]')); return false;" style="color: white;">Accueil</a></p>
+                    <p><a href="#" onclick="showPage('recherche'); markActiveNav(document.querySelector('nav a[onclick*=\"recherche\"]')); return false;" style="color: white;">Résultats</a></p>
+                    <p><a href="#" onclick="showPage('auteurs'); markActiveNav(document.querySelector('nav a[onclick*=\"auteurs\"]')); return false;" style="color: white;">Auteurs</a></p>
+                    <p><a href="#" onclick="showPage('quiz'); markActiveNav(document.querySelector('nav a[onclick*=\"quiz\"]')); return false;" style="color: white;">Quiz</a></p>
+                    <p><a href="#" onclick="showPage('bibliographie'); markActiveNav(document.querySelector('nav a[onclick*=\"bibliographie\"]')); return false;" style="color: white;">Bibliographie</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>gem-numerique@grenoble-em.com</p>
+                    <p>+33 4 76 70 60 60</p>
+                    <p>Grenoble École de Management</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Numérique Responsable à GEM - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction pour afficher une page et masquer les autres
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Afficher la page demandée
+            document.getElementById(pageId).classList.add('active');
+
+            // Remonter en haut de la page
+            window.scrollTo(0, 0);
+
+            // Mettre à jour l'URL avec un hash
+            window.location.hash = pageId;
+
+            // Déclencher les animations pour les éléments de la nouvelle page
+            setTimeout(initAnimations, 100);
+        }
+
+        // Fonction pour marquer la navigation active
+        function markActiveNav(element) {
+            // Retirer la classe active de tous les liens de navigation
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('nav-active');
+            });
+
+            // Ajouter la classe active au lien cliqué
+            element.classList.add('nav-active');
+        }
+
+        // Vérifier l'URL au chargement pour afficher la bonne page
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const pageId = window.location.hash.substring(1);
+                if (document.getElementById(pageId)) {
+                    showPage(pageId);
+                    
+                    // Mettre à jour la navigation active
+                    const navLink = document.querySelector(`nav a[onclick*="${pageId}"]`);
+                    if (navLink) {
+                        markActiveNav(navLink);
+                    }
+                }
+            }
+
+            // Initialiser les animations
+            initAnimations();
+
+            // Initialiser les particules
+            createParticles();
+
+            // Initialiser le curseur personnalisé
+            initCustomCursor();
+
+            // Ajouter les écouteurs d'événements pour les cartes cliquables
+            document.querySelectorAll('.card[data-target]').forEach(card => {
+                card.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-target');
+                    showPage(targetPage);
+                    
+                    // Mettre à jour la navigation active
+                    const navLink = document.querySelector(`nav a[onclick*="${targetPage}"]`);
+                    if (navLink) {
+                        markActiveNav(navLink);
+                    }
+                });
+            });
+        });
+
+        // Indicateur de défilement
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector(".scroll-indicator").style.width = scrolled + "%";
+
+            // Vérifier les éléments à animer au défilement
+            checkElementsInViewport();
+        };
+
+        // Animation des éléments au défilement
+        function checkElementsInViewport() {
+            document.querySelectorAll('.section-title, .card, .research-item, .author-card, .stat-item, .bibliography-item, .quiz-question, .quiz-intro, .quiz-restart').forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const isInViewport = rect.top <= (window.innerHeight * 0.9) && rect.bottom >= 0;
+                
+                if (isInViewport) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        function initAnimations() {
+            // Initialiser les animations pour les éléments déjà visibles
+            checkElementsInViewport();
+        }
+
+        // Mode sombre CORRIGÉ
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Animation des statistiques
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                
+                const updateNumber = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.round(current) + (stat.textContent.includes('%') ? '%' : '');
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '');
+                    }
+                };
+                
+                updateNumber();
+            });
+        }
+
+        // Observer la section des statistiques
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const gemSection = document.querySelector('.gem-section');
+        if (gemSection) {
+            statsObserver.observe(gemSection);
+        }
+
+        // Animation de particules
+        function createParticles() {
+            const container = document.getElementById('particles-js');
+            if (!container) return;
+            
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Position aléatoire
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Taille aléatoire
+                const size = Math.random() * 5 + 2;
+                
+                // Animation delay aléatoire
+                const delay = Math.random() * 5;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animation = `floatParticle ${10 + Math.random() * 10}s infinite ${delay}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Curseur personnalisé
+        function initCustomCursor() {
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            if (!cursor || !cursorFollower) return;
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+            
+            // Effet au survol des liens et boutons
+            const interactiveElements = document.querySelectorAll('a, button, .btn, .card, .research-item, .quiz-option, .author-img');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursorFollower.style.opacity = '0.2';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorFollower.style.opacity = '0.5';
+                });
+            });
+        }
+
+        // Fonctionnalités du quiz
+        function submitQuiz() {
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b'
+            };
+            
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+            let allAnswered = true;
+            
+            // Vérifier si toutes les questions ont été répondues
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selectedOption) {
+                    allAnswered = false;
+                    // Mettre en évidence les questions sans réponse
+                    document.querySelector(`#explanation-q${i}`).parentElement.style.border = '2px solid var(--accent)';
+                } else {
+                    document.querySelector(`#explanation-q${i}`).parentElement.style.border = '';
+                }
+            }
+            
+            if (!allAnswered) {
+                alert('Veuillez répondre à toutes les questions avant de soumettre le quiz.');
+                return;
+            }
+            
+            // Vérifier les réponses
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const questionElement = document.querySelector(`#explanation-q${i}`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === answers[`q${i}`]) {
+                        score++;
+                        selectedOption.parentElement.classList.add('correct');
+                    } else {
+                        selectedOption.parentElement.classList.add('incorrect');
+                        // Marquer la bonne réponse
+                        const correctOption = document.querySelector(`input[name="q${i}"][value="${answers[`q${i}`]}"]`);
+                        if (correctOption) {
+                            correctOption.parentElement.classList.add('correct');
+                        }
+                    }
+                    
+                    // Afficher l'explication
+                    if (questionElement) {
+                        questionElement.style.display = 'block';
+                    }
+                }
+            }
+            
+            // Afficher le résultat
+            const quizResult = document.getElementById('quiz-result');
+            const quizScore = document.getElementById('quiz-score');
+            const quizFeedback = document.getElementById('quiz-feedback');
+            
+            quizScore.textContent = `${score}/${totalQuestions}`;
+            
+            if (score === totalQuestions) {
+                quizFeedback.textContent = 'Félicitations ! Vous maîtrisez parfaitement le sujet.';
+            } else if (score >= totalQuestions * 0.7) {
+                quizFeedback.textContent = 'Bon score ! Vous avez de bonnes connaissances sur le sujet.';
+            } else if (score >= totalQuestions * 0.5) {
+                quizFeedback.textContent = 'Score moyen. Continuez à vous renseigner sur le sujet.';
+            } else {
+                quizFeedback.textContent = 'Vous devriez en apprendre davantage sur l\'impact environnemental du numérique.';
+            }
+            
+            quizResult.style.display = 'block';
+            document.querySelector('.quiz-restart').classList.add('visible');
+            
+            // Faire défiler jusqu'au résultat
+            quizResult.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            // Réinitialiser le formulaire
+            document.getElementById('quiz-form').reset();
+            
+            // Cacher le résultat
+            document.getElementById('quiz-result').style.display = 'none';
+            
+            // Retirer les classes de correction
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('correct');
+                option.classList.remove('incorrect');
+            });
+            
+            // Cacher les explications
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.style.display = 'none';
+            });
+            
+            // Remonter en haut du quiz
+            document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fonctions pour le modal d'opinion
+        function showOpinion(author) {
+            const modal = document.getElementById('opinion-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalAuthor = document.getElementById('modal-author');
+            
+            if (author === 'camille') {
+                modalBody.innerHTML = `
+                    <h3>Le numérique peut-il être véritablement vert ?</h3>
+                    <p>La question de la durabilité du numérique est complexe et multidimensionnelle. D'un côté, le numérique permet des optimisations qui réduisent notre impact environnemental (télétravail, dématérialisation, smart cities). De l'autre, sa croissance exponentielle génère une consommation toujours plus importante de ressources et d'énergie.</p>
+                    <p>Je suis convaincu que la solution ne réside pas dans un rejet de la technologie, mais dans une approche plus responsable de sa conception et de son utilisation. L'écoconception des services numériques, l'allongement de la durée de vie des appareils et le recours aux énergies renouvelables pour alimenter les data centers sont des pistes essentielles.</p>
+                    <p>Cependant, il faut également s'interroger sur notre consommation effrénée de contenus en streaming, de cloud storage et d'objets connectés. La sobriété numérique doit devenir un principe guide pour les individus comme pour les entreprises.</p>
+                `;
+                modalAuthor.textContent = 'Camille Pech';
+            } else if (author === 'diego') {
+                modalBody.innerHTML = `
+                    <h3>Vers une régulation contraignante du numérique</h3>
+                    <p>Face à l'urgence climatique, il me semble évident que les mesures volontaires ne suffiront pas à réduire l'impact environnemental du numérique. Le secteur continue de croître à un rythme effréné, et ses émissions de gaz à effet de serre avec.</p>
+                    <p>Je plaide pour une régulation plus contraignante au niveau international, avec des objectifs chiffrés de réduction de l'empreinte environnementale. Les géants du numérique doivent être tenus responsables de l'ensemble du cycle de vie de leurs produits et services, depuis l'extraction des matériaux jusqu'à la fin de vie des appareils.</p>
+                    <p>Des mesures comme l'indice de réparabilité obligatoire en France sont un pas dans la bonne direction, mais il faut aller plus loin : obligation d'utiliser des énergies renouvelables pour les data centers, allongement de la durée de garantie légale, taxation basée sur l'empreinte environnementale des services numériques.</p>
+                    <p>Sans cadre réglementaire fort, la course à la performance et à l'innovation continuera de primer sur les considérations environnementales.</p>
+                `;
+                modalAuthor.textContent = 'Diego Roman';
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('opinion-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('opinion-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Ajouter l'animation de flottement pour les particules
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatParticle {
+                0% {
+                    transform: translateY(0) translateX(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(${Math.random() > 0.5 ? '-' : ''}${20 + Math.random() * 30}px) translateX(${Math.random() > 0.5 ? '-' : ''}${20 + Math.random() * 30}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>
